@@ -1,0 +1,173 @@
+* {
+box-sizing: border-box;
+margin: 0 auto;
+font-family: 'VT323', monospace;
+font-size: 1.0rem
+}
+
+img {
+  max-width: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 20vh;
+}
+
+.title {
+  background-color: rgb(127, 140, 141);
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+.title h1 {
+  width: 100%;
+  /*font-family: 'Shrikhand', cursive;*/
+  color: red;
+  font-weight: 500;
+  text-shadow: 0px 0px 2px #000;
+  font-size: 2.2rem;
+  text-align: left;
+}
+
+.instruct-list {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0%;
+  padding: 0% 0% 0% 0%;
+}
+
+.instruct-list ul {
+  list-style-type: circle;
+  padding: 0% 0% 0% 0%;
+}
+
+.instruct-list li {
+  text-align: left;
+  font-size: 0.55rem;
+  padding: 0%;
+}
+
+.level-form {
+  padding: 1% 10%;
+}
+
+.level-buttons {
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.level-buttons button {
+  width: auto;
+  height: 5vh;
+  font-size: 0.7rem;
+  background-color: #EF5350;
+  border: none;
+  border-radius: 5%;
+  box-shadow: 0px 0px 10px black;
+}
+
+.word-solution {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1% 5%;
+}
+
+.mystery-word {
+  flex-basis: 50%;
+  text-align: right;
+  padding: 0% 5%;
+}
+
+.total-correct {
+  flex-basis: 50%;
+  text-align: left;
+  padding: 0% 2%;
+}
+
+.total-correct h2 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-family: 'Patrick Hand SC', cursive;
+}
+
+.messages {
+  padding: 2%;
+  width: 100%;
+  text-align: center;
+}
+
+#blurred {
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0,0,0,1);
+}
+
+.guesses-and-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.guess-info {
+  padding: 2% 1%;
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.guess-input {
+  flex-basis: 25%;
+}
+
+.guesses-left {
+  flex-basis: 25%;
+}
+
+.letters-guessed {
+  flex-basis: 50%;
+}
+
+.guess-input label, .guess-input input, .guess-input button {
+  font-size: 0.6rem;
+}
+
+.total-correct {
+  flex-basis: 60%;
+  text-align: center;
+}
+
+.hangman-image {
+  flex-basis: 40%;
+}
+
+.hangman-image img {
+  width: 30vw;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+
+
+/*-------Tablet Display-------*/
+
+@media screen and ( min-width: 545px ) {
+}

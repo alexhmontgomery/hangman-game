@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Save Josh</title>
+    <link href="./main.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./images/hangman.png">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC|Oxygen|Shrikhand|VT323" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>The Quest to Save Josh</h1>
+      </div>
+      <div class="instruct-list">
+        <ul class="">
+          <li>Josh has been captured and will be executed by hanging</li>
+          <li>He can only be saved if you guess the mystery word</li>
+          <li>Select an easy, medium, or hard word</li>
+          <li>Guess one letter at a time</li>
+          <li>If you make 8 incorrect guesses Josh will be executed</li>
+          <li>Save Josh!</li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="level-form">
+        <form class="level-buttons" action="/newGame" method="post">
+          <button type="submit" name="newGame" value="easy">Easy (4-6 letters)</button><br>
+          <button type="submit" name="newGame" value="medium">Medium (6-8 letters)</button><br>
+          <button type="submit" name="newGame" value="hard">Hard (8+ letters)</button>
+        </form>
+    </section>
+
+    <section class="word-solution">
+      <div class="mystery-word">
+        {{^answer}}<h3>Mystery Word: <span id="blurred">{{word}}</span></h3>{{/answer}}
+        {{#answer}}<h3>Mystery Word: <span>{{answer}}</span></h3>{{/answer}}
+      </div>
+      <div class="total-correct">
+        <h2 id="solution-content">{{solution}}</h2>
+      </div>
+    </section>
+
+    <section class="messages">
+      {{#alreadyGuessed}}<h3>{{alreadyGuessed}}</h3>{{/alreadyGuessed}}
+      {{^alreadyGuessed}}{{/alreadyGuessed}}
+      {{#gameOver}}<h3>{{gameOver}}</h3>{{/gameOver}}
+      {{^gameOver}}{{/gameOver}}
+    </section>
+
+    <section class="guesses-and-image">
+      <div class="guess-info">
+          <div class="guess-input">
+            <form class="" action="/guess" method="post">
+              <label for="guess">Enter A Letter</label>
+              <input type="text" name="guess" value="">
+              <button type="submit" name="guess-button">Try It!</button>
+            </form>
+          </div>
+          <div class="guesses-left">
+            {{#gameOver}}<h4>Game Over!</h4>{{/gameOver}}
+            {{^gameOver}}<h4>{{count}} Guesses Remaining</h4>{{/gameOver}}
+          </div>
+          <div class="letters-guessed">
+            <h4>Letters guessed so far:</h4>
+            <h5 id="guessed-content">{{guesses}}</h5>
+          </div>
+      </div>
+      <div class="hangman-image">
+        <img src="./images/hangman-{{count}}.png" alt="hangman picture"> <!--image loads in parts based on incorrect guesses-->
+      </div>
+    </section>
+
+  </body>
+</html>
