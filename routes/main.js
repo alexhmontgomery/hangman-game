@@ -24,6 +24,7 @@ var guessesArray = []
 var guesses = ''
 var message = ''
 var answer = ''
+var gameOver = ''
 
 router.get('/', function (req, res) {
   res.render('index', {
@@ -32,7 +33,8 @@ router.get('/', function (req, res) {
     count: count,
     guesses: guesses,
     message: message,
-    answer: answer
+    answer: answer,
+    gameOver: gameOver
   })
 })
 
@@ -50,30 +52,33 @@ router.post('/newGame', function (req, res) {
 })
 
 router.post('/guess', function (req, res, next) {
-  req.checkBody('guess', 'Guess must be 1 letter').isAlpha()
-  let errors = req.validationErrors()
-  console.log('errors ' + errors)
+  message = ''
+
+  req.checkBody('guess', 'Guess must be 1 letter').isAlpha().notEmpty().len(1, 1)
+  let errors = req.validationErrors(true)
   if (errors) {
-    message = errors
+    console.log('errors ' + errors.guess.msg)
+    message = errors.guess.msg
+    return res.redirect('/')
   }
+
   sess = req.session
   sess.guess = req.body.guess
-  message = ''
 
   if (Guess.checkIfAlreadyGuessed(sess.guess, guessesArray) === true) {
     // letter already guessed
     message = 'This letter has already been guessed! Please try another.'
+    return res.redirect('/')
+  }
+  // letter not guessed & continue with evaluation
+  guessesArray.push(sess.guess)
+  guesses = guessesArray.join(', ')
+  if (wordArray.indexOf(sess.guess) > -1) {
+    solution = Guess.inputCorrectGuess(sess.guess, wordArray, solution)
+    console.log(solution)
   } else {
-    // letter not guessed & continue with evaluation
-    guessesArray.push(sess.guess)
-    guesses = guessesArray.join(', ')
-    if (wordArray.indexOf(sess.guess) > -1) {
-      solution = Guess.inputCorrectGuess(sess.guess, wordArray, solution)
-      console.log(solution)
-    } else {
-      // letter incorrect
-      count = count - 1
-    }
+    // letter incorrect
+    count = count - 1
   }
 
   if (count === 0) {
@@ -86,6 +91,7 @@ router.post('/guess', function (req, res, next) {
   if (solutionDisplay === word) {
     // user wins
     message = 'CONGRATULATIONS! You win. Josh\'s life has been spared'
+    gameOver = 'Winner!'
     count = 999
     answer = word
   }
@@ -97,6 +103,7 @@ function resetAll () {
   guesses = ''
   message = ''
   answer = ''
+  gameOver = ''
 }
 
 module.exports = router
