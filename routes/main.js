@@ -4,8 +4,15 @@ const Word = require('../models/word')
 const Guess = require('../models/guess')
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const expressValidator = require('express-validator')
 
 router.use(bodyParser.urlencoded({ extended: false }))
+router.use(session({
+  secret: 'alexisthegreatest',
+  resave: false,
+  saveUninitialized: true
+}))
+router.use(expressValidator())
 
 var word = ''
 var wordArray = []
@@ -17,12 +24,6 @@ var guessesArray = []
 var guesses = ''
 var message = ''
 var answer = ''
-
-router.use(session({
-  secret: 'alexisthegreatest',
-  resave: false,
-  saveUninitialized: true
-}))
 
 router.get('/', function (req, res) {
   res.render('index', {
@@ -49,6 +50,12 @@ router.post('/newGame', function (req, res) {
 })
 
 router.post('/guess', function (req, res, next) {
+  req.checkBody('guess', 'Guess must be 1 letter').isAlpha()
+  let errors = req.validationErrors()
+  console.log('errors ' + errors)
+  if (errors) {
+    message = errors
+  }
   sess = req.session
   sess.guess = req.body.guess
   message = ''
