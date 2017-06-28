@@ -53,11 +53,10 @@ router.post('/newGame', function (req, res) {
 
 router.post('/guess', function (req, res, next) {
   message = ''
-
+  // validation checker
   req.checkBody('guess', 'Guess must be 1 letter').isAlpha().notEmpty().len(1, 1)
   let errors = req.validationErrors(true)
   if (errors) {
-    console.log('errors ' + errors.guess.msg)
     message = errors.guess.msg
     return res.redirect('/')
   }
