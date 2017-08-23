@@ -1,5 +1,6 @@
 const fs = require('fs')
-const words = fs.readFileSync('/usr/share/dict/words', 'utf-8').toLowerCase().split('\n')
+const Busboy = require('busboy')
+const words = fs.readFileSync('./data/words.txt', 'utf-8').toLowerCase().split('\n')
 
 function createNewWord (gameLevel) {
   let word = words[Math.floor(Math.random() * words.length)]
