@@ -7,8 +7,9 @@ app.set('view engine', 'mustache')
 app.set('views', './views')
 app.use(express.static('public'))
 
-app.listen(3000, function () {
-  console.log('Server ON! Go to Port: 3000')
+const port = process.env.PORT || 3000
+app.listen(port, function () {
+  console.log('Server ON! Go to port:' + port)
 })
 
 const main = require('./routes/main')
