@@ -1,8 +1,9 @@
+/*-------Mobile Styling First-------*/
+
 * {
-box-sizing: border-box;
-margin: 0 auto;
-font-family: 'VT323', monospace;
-font-size: 1.0rem
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: 'VT323', monospace, sans-serif;
 }
 
 img {
@@ -10,71 +11,54 @@ img {
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  height: 20vh;
+  display: block;
+}
+
+.title-container {
+  background-color: rgb(127, 140, 141);
+  padding: 45px 20px;
 }
 
 .title {
-  background-color: rgb(127, 140, 141);
-  flex-basis: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 5%;
-}
-
-.title h1 {
   width: 100%;
-  /*font-family: 'Shrikhand', cursive;*/
   color: red;
   font-weight: 500;
   text-shadow: 0px 0px 2px #000;
-  font-size: 2.2rem;
-  text-align: left;
+  font-size: 2.1em;
+  text-align: center;
 }
 
 .instruct-list {
-  flex-basis: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 0%;
-  padding: 0% 0% 0% 0%;
+  padding: 30px 5px 10px 5px;
 }
 
 .instruct-list ul {
   list-style-type: circle;
-  padding: 0% 0% 0% 0%;
+  padding-left: 25px;
 }
 
 .instruct-list li {
   text-align: left;
-  font-size: 0.55rem;
-  padding: 0%;
+  font-size: 1.0em;
+}
+
+.level-form-container {
+  padding: 0.5em 0.7em;
 }
 
 .level-form {
-  padding: 1% 10%;
-}
-
-.level-buttons {
   padding: 1%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   text-align: center;
 }
 
-.level-buttons button {
-  width: auto;
-  height: 5vh;
-  font-size: 0.7rem;
+.level-button {
+  margin: 5px;
+  font-size: 1em;
   background-color: #EF5350;
   border: none;
   border-radius: 5%;
@@ -83,7 +67,7 @@ header {
 
 .word-solution {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 1% 5%;
@@ -92,24 +76,25 @@ header {
 .mystery-word {
   flex-basis: 50%;
   text-align: right;
-  padding: 0% 5%;
+  padding: 13px 5%;
 }
 
 .total-correct {
   flex-basis: 50%;
-  text-align: left;
-  padding: 0% 2%;
+  text-align: center;
+  padding: 0 2%;
 }
 
 .total-correct h2 {
-  font-size: 1.3rem;
+  font-size: 1.3em;
   text-transform: uppercase;
-  font-family: 'Patrick Hand SC', cursive;
+  font-family: 'Patrick Hand SC', cursive, sans-serif;
 }
 
 .messages {
-  padding: 2%;
+  padding: 10px 5px;
   width: 100%;
+  color: darkred;
   text-align: center;
 }
 
@@ -120,7 +105,7 @@ header {
 
 .guesses-and-image {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: stretch;
 }
@@ -139,20 +124,36 @@ header {
 }
 
 .guesses-left {
+  padding-top: 20px;
   flex-basis: 25%;
+  font-size: 1.5em;
 }
 
 .letters-guessed {
+  padding-top: 15px;
+  padding-bottom: 15px;
   flex-basis: 50%;
+  font-size: 1.5em;
 }
 
-.guess-input label, .guess-input input, .guess-input button {
-  font-size: 0.6rem;
+.guess-input-form label, .guess-input-form input, .guess-input-form button {
+  font-size: 1.3em;
 }
 
-.total-correct {
-  flex-basis: 60%;
-  text-align: center;
+.guess-input-form input {
+  border: 1px solid black;
+  width: 65px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+.guess-input-form button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px black;
 }
 
 .hangman-image {
@@ -160,14 +161,146 @@ header {
 }
 
 .hangman-image img {
-  width: 30vw;
+  width: 50vw;
   border: 1px solid black;
   border-radius: 5px;
 }
 
 
+/* ---- Responsive Breakpoints ---- */
+/* -- Tablet Display -- */
+@media only screen and (min-device-width : 768px) {
+  .title {
+    font-size: 3.5em;
+  }
 
-/*-------Tablet Display-------*/
+  .instruct-list {
+    padding: 30px 125px;
+  }
 
-@media screen and ( min-width: 545px ) {
+  .instruct-list li {
+    font-size: 1.3em;
+  }
+
+  .level-form-container {
+    padding: 0.5em 0.7em;
+  }
+
+  .level-form {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .level-button {
+    font-size: 1.2em;
+    padding: 15px;
+  }
+
+  .word-solution {
+    padding-top: 30px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .mystery-word {
+    font-size: 1.5em;
+  }
+
+  .total-correct {
+    text-align: left;
+    font-size: 1.5em;
+  }
+
+  .messages {
+    font-size: 1.2em;
+  }
+
+  .guesses-and-image {
+    padding-top: 40px;
+    flex-direction: row;
+  }
+
+  .guesses-left {
+    font-size: 1.7em;
+  }
+
+  .letters-guessed {
+    font-size: 1.7em;
+  }
+
+  .guess-input-form label, .guess-input-form input, .guess-input-form button {
+    font-size: 1.5em;
+  }
+
+  .hangman-image img {
+    width: 35vw;
+  }
+}
+
+
+@media only screen and (min-device-width : 1024px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 25vh;
+  }
+
+  .title-container {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .instruct-list {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2px 2px;
+  }
+
+  .instruct-list li {
+    font-size: 1.2em;
+  }
+
+  .level-form-container {
+    padding: 1.5em 0.7em;
+  }
+
+  .word-solution {
+    padding-top: 10px;
+  }
+}
+
+/* -- Desktop Display -- */
+@media only screen and (min-device-width : 1224px) {
+  .instruct-list li {
+    font-size: 1.3em;
+  }
+
+  .level-button {
+    font-size: 1.5em;
+  }
+}
+
+
+@media only screen and (min-device-width : 1800px) {
+  .title {
+    font-size: 4.3em;
+  }
+
+  .instruct-list li {
+    font-size: 1.5em;
+  }
+
+  .guess-input-form label, .guess-input-form input, .guess-input-form button {
+    font-size: 1.6em;
+  }
+
+  .mystery-word, .total-correct, .guesses-left, .letters-guessed {
+    font-size: 2.0em;
+  }
 }
